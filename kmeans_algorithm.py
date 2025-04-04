@@ -1,7 +1,7 @@
 # imports
 import numpy as np
 from sklearn.base import BaseEstimator, ClusterMixin
-from data_loader import load_iris_data, load_phonome_data
+from load_data import load_iris_data, load_phonome_data
 
 # Load the datasets
 iris_input_features = load_iris_data()
@@ -77,13 +77,13 @@ phonome_k = 5
 kmeans_iris_data = KMEANSClustering(iris_k)
 kmeans_iris_data.fit(iris_input_features)
 kmeans_phonome_data = KMEANSClustering(phonome_k)
-kmeans_phonome_data.fit(phoneme_input_features)
+kmeans_phonome_data.fit(phonome_input_features)
 
 # Print results
 print(f"-----K-Means Clustering on the Iris Dataset (k={iris_k})-----")
 kmeans_iris_data.print_labels()
 print()
-print(f"-----K-Means Clustering on the Phonome Dataset (k={phonome_k}-----")
+print(f"-----K-Means Clustering on the Phonome Dataset (k={phonome_k})-----")
 kmeans_phonome_data.print_labels()
 print()
 
