@@ -1,16 +1,11 @@
+#imports
 import numpy as np
-import pandas as pd
-from scipy.io import arff
 from sklearn.base import BaseEstimator, ClusterMixin
+from data_loader import load_iris_data, load_phonome_data
 
-# Iris dataset
-iris_data = arff.loadarff("iris.arff")
-iris_df = pd.DataFrame(iris_data[0])
-iris_input_features = iris_df.drop(columns=["class"])
-# Phonome dataset
-phoneme_data = arff.loadarff("phoneme_data_openml.arff")
-phoneme_df = pd.DataFrame(phoneme_data[0])
-phoneme_input_features = phoneme_df.drop(columns=["Class"])
+# Load the datasets
+iris_input_features = load_iris_data()
+phonome_input_features = load_phonome_data()
 
 class HACClustering(BaseEstimator,ClusterMixin):
 
