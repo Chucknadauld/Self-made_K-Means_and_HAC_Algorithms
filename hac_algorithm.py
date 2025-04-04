@@ -1,7 +1,7 @@
 #imports
 import numpy as np
 from sklearn.base import BaseEstimator, ClusterMixin
-from data_loader import load_iris_data, load_phonome_data
+from load_data import load_iris_data, load_phonome_data
 
 # Load the datasets
 iris_input_features = load_iris_data()
