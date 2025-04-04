@@ -89,24 +89,24 @@ phonome_k_HAC = 5
 # Run HAC on the two datasets
 hac_iris_single = HACClustering(iris_k_HAC, link_type='single')
 hac_iris_single.fit(iris_input_features)
-hac_iris_complete = HACClustering(iris_k_HAC, link_type='complete')
-hac_iris_complete.fit(iris_input_features)
-
-hac_phonome_single = HACClustering(phonome_k_HAC, link_type='single')
-hac_phonome_single.fit(phonome_input_features)
-hac_phonome_complete = HACClustering(phonome_k_HAC, link_type='complete')
-hac_phonome_complete.fit(phonome_input_features)
-
-# Print results
 print(f"-----HAC Clustering on the Iris Dataset (k={iris_k_HAC}, Single Link)-----")
 hac_iris_single.print_labels()
 print()
+
+hac_iris_complete = HACClustering(iris_k_HAC, link_type='complete')
+hac_iris_complete.fit(iris_input_features)
 print(f"-----HAC Clustering on the Iris Dataset (k={iris_k_HAC}, Complete Link)-----")
 hac_iris_complete.print_labels()
 print()
 
-print(f"-----HAC Clustering on the Phonome Dataset (k={phonome_k_HAC}, Single Link)-----")
-hac_phonome_single.print_labels()
-print()
-print(f"-----HAC Clustering on the Phonome Dataset (k={phonome_k_HAC}, Complete Link)-----")
-hac_phonome_complete.print_labels()
+"""THIS IS VERY SLOW SO I COMMENTED THEM OUT FOR NOW"""
+# hac_phonome_single = HACClustering(phonome_k_HAC, link_type='single')
+# hac_phonome_single.fit(phonome_input_features)
+# print(f"-----HAC Clustering on the Phonome Dataset (k={phonome_k_HAC}, Single Link)-----")
+# hac_phonome_single.print_labels()
+# print()
+
+# hac_phonome_complete = HACClustering(phonome_k_HAC, link_type='complete')
+# hac_phonome_complete.fit(phonome_input_features)
+# print(f"-----HAC Clustering on the Phonome Dataset (k={phonome_k_HAC}, Complete Link)-----")
+# hac_phonome_complete.print_labels()
