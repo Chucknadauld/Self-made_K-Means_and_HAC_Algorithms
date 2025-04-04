@@ -1,11 +1,6 @@
 # imports
 import numpy as np
 from sklearn.base import BaseEstimator, ClusterMixin
-from load_data import load_iris_data, load_phonome_data
-
-# Load the datasets
-iris_input_features = load_iris_data()
-phonome_input_features = load_phonome_data()
 
 class KMEANSClustering(BaseEstimator,ClusterMixin):
 
@@ -68,37 +63,3 @@ class KMEANSClustering(BaseEstimator,ClusterMixin):
         for i in range(self.k):
             count = np.sum(self.labels == i)
             print(f"   Cluster {i}: {count} points")
-
-# CHANGE K-VALUES HERE
-iris_k = 3
-phonome_k = 5
-
-# Run K-Means on the two datasets
-kmeans_iris_data = KMEANSClustering(iris_k)
-kmeans_iris_data.fit(iris_input_features)
-kmeans_phonome_data = KMEANSClustering(phonome_k)
-kmeans_phonome_data.fit(phonome_input_features)
-
-# Print results
-print(f"-----K-Means Clustering on the Iris Dataset (k={iris_k})-----")
-kmeans_iris_data.print_labels()
-print()
-print(f"-----K-Means Clustering on the Phonome Dataset (k={phonome_k})-----")
-kmeans_phonome_data.print_labels()
-print()
-
-# With specifying the k initial centroids
-custom_centroids = [
-    [5.1, 3.5, 1.4, 0.2],
-    [6.7, 3.0, 5.2, 2.3],
-    [5.8, 2.7, 4.1, 1.0]
-]
-custom_k = len(custom_centroids)
-
-kmeans_iris_custom_centroids = KMEANSClustering(custom_k, initial_centroids=custom_centroids)
-kmeans_iris_custom_centroids.fit(iris_input_features)
-print(f"-----K-Means Clustering on Iris with Specifying k initial centroids-----")
-kmeans_iris_custom_centroids.print_labels()
-print("Custom Centroids for reference:")
-print(custom_centroids)
-print(f"(k={custom_k})")

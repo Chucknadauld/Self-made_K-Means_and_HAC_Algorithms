@@ -1,11 +1,6 @@
 #imports
 import numpy as np
 from sklearn.base import BaseEstimator, ClusterMixin
-from load_data import load_iris_data, load_phonome_data
-
-# Load the datasets
-iris_input_features = load_iris_data()
-phonome_input_features = load_phonome_data()
 
 class HACClustering(BaseEstimator,ClusterMixin):
 
@@ -81,32 +76,3 @@ class HACClustering(BaseEstimator,ClusterMixin):
         for i in unique_labels:
             count = np.sum(self.labels == i)
             print(f"   Cluster {i}: {count} points")
-
-# CHANGE K-VALUES HERE
-iris_k_HAC = 3
-phonome_k_HAC = 5
-
-# Run HAC on the two datasets
-hac_iris_single = HACClustering(iris_k_HAC, link_type='single')
-hac_iris_single.fit(iris_input_features)
-print(f"-----HAC Clustering on the Iris Dataset (k={iris_k_HAC}, Single Link)-----")
-hac_iris_single.print_labels()
-print()
-
-hac_iris_complete = HACClustering(iris_k_HAC, link_type='complete')
-hac_iris_complete.fit(iris_input_features)
-print(f"-----HAC Clustering on the Iris Dataset (k={iris_k_HAC}, Complete Link)-----")
-hac_iris_complete.print_labels()
-print()
-
-"""THIS IS VERY SLOW SO I COMMENTED THEM OUT FOR NOW"""
-# hac_phonome_single = HACClustering(phonome_k_HAC, link_type='single')
-# hac_phonome_single.fit(phonome_input_features)
-# print(f"-----HAC Clustering on the Phonome Dataset (k={phonome_k_HAC}, Single Link)-----")
-# hac_phonome_single.print_labels()
-# print()
-
-# hac_phonome_complete = HACClustering(phonome_k_HAC, link_type='complete')
-# hac_phonome_complete.fit(phonome_input_features)
-# print(f"-----HAC Clustering on the Phonome Dataset (k={phonome_k_HAC}, Complete Link)-----")
-# hac_phonome_complete.print_labels()
